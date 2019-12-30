@@ -14,9 +14,14 @@ public static void main(String[] args) throws IOException {
                 .map(line -> {
                     if (line.matches("!\\[.*\\]\\(.*\\)")) {
                         System.out.println(line);
-                        return line.replace("(", "(" + title)
+                        if (line.matches("!\\[.*\\]\\(\\./.*\\)")) {
+                            line = line.replace("./", "/");
+                        }
+                        String newLine = line.replace("(", "(" + title)
                                 .replace(")", "?raw=true)")
                                 .replace("/tree/", "/blob/");
+                        System.out.println(">> " + newLine);
+                        return newLine;
                     } else {
                         return line;
                     }
