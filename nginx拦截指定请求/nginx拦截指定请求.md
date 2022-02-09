@@ -13,7 +13,7 @@
 ```shell
 server {
     listen 80;
-    server_name audit.duoyioa.com;
+    server_name xxx.test.com;
     rewrite ^(.*)$ https://${server_name}$1 permanent;
 }
 ```
